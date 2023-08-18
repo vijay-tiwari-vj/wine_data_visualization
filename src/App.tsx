@@ -29,11 +29,13 @@ function App() {
     });
   }, []);
 
+  // * unique alcohol classes in wine data set
   const uniqueAlcoholClasses = useMemo(() => {
     const alcoholClasses = wineData.map((data) => data.Alcohol);
     return [...new Set(alcoholClasses)];
   }, [wineData]);
 
+  // * creating class-wise sorted flavanoid and gamma values
   const [flavanoidValues, gammaValues] = useMemo(() => {
     const classWiseFlavanoidValues: Record<string, Array<number>> = {};
     const classWiseGammaValues: Record<string, Array<number>> = {};
