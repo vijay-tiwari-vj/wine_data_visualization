@@ -35,3 +35,27 @@ export const calculateMedian = (values: Array<number>) => {
 
   return median.toFixed(3);
 };
+
+// * calculate mode of values
+export const calculateMode = (values: Array<number>) => {
+  if (!values.length) return 0;
+  let valuesSet: Record<number, number> = {};
+
+  for (let i = 0; i < values.length; ++i) {
+    const value = values[i];
+
+    if (!Object.keys(valuesSet).includes(value.toString())) {
+      // * setting value's count to 1 if doesn't exist in set
+      valuesSet[value] = 1;
+    } else {
+      // * increment count of value if already exists
+      valuesSet[value] += 1;
+    }
+  }
+
+  const sortedSet = Object.entries(valuesSet).sort((a, b) => b[1] - a[1]);
+  const maxKeyValuePair = sortedSet?.[0];
+  const valueOfMaxFrequency = maxKeyValuePair?.[0];
+
+  return valueOfMaxFrequency || null;
+};

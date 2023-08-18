@@ -1,6 +1,10 @@
 import React, { useMemo } from "react";
 import { WineDataType } from "../utils/types";
-import { calculateMean, calculateMedian } from "../utils/helperFunctions";
+import {
+  calculateMean,
+  calculateMedian,
+  calculateMode,
+} from "../utils/helperFunctions";
 
 type FlavanoidTableProps = {
   wineData: WineDataType;
@@ -55,6 +59,19 @@ function FlavanoidTable({
     return medianValues;
   }, [uniqueAlcoholClasses, flavanoidValues]);
 
+  // * calculating flavanoid mode
+  const flavanoidsModeValues = useMemo(() => {
+    const modeValues: Array<any> = [];
+
+    uniqueAlcoholClasses.forEach((classValue) => {
+      const flavanoidMode = calculateMode(flavanoidValues[classValue]);
+
+      modeValues.push(flavanoidMode);
+    });
+
+    return modeValues;
+  }, [uniqueAlcoholClasses, flavanoidValues]);
+
   return (
     <table>
       <caption>📈 Mean, Median and Mode of Flavanoids</caption>
@@ -82,7 +99,9 @@ function FlavanoidTable({
         </tr>
         <tr>
           <th>Flavanoids Mode</th>
-          <td>6</td>
+          {flavanoidsModeValues.map((value, index) => (
+            <td key={`flavanoid_mode_${index}`}>{value || "NA"}</td>
+          ))}
         </tr>
       </tbody>
     </table>
