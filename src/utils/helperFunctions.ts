@@ -55,7 +55,9 @@ export const calculateMode = (values: Array<number>) => {
 
   const sortedSet = Object.entries(valuesSet).sort((a, b) => b[1] - a[1]);
   const maxKeyValuePair = sortedSet?.[0];
-  const valueOfMaxFrequency = Number(maxKeyValuePair?.[0]);
+  // * if all values have a frequency of 1, then mode is null
+  const valueOfMaxFrequency =
+    maxKeyValuePair[1] === 1 ? null : Number(maxKeyValuePair?.[0]).toFixed(3);
 
-  return valueOfMaxFrequency.toFixed(3) || null;
+  return valueOfMaxFrequency;
 };

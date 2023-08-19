@@ -13,10 +13,9 @@ function App() {
   const wineData: WineDataType = useMemo(() => {
     return RawWineData.map((alcoholData) => {
       // * calculating gamma
-      const Gamma = (
+      const Gamma =
         (Number(alcoholData.Ash) * Number(alcoholData.Hue)) /
-        Number(alcoholData.Magnesium)
-      ).toFixed(2);
+        Number(alcoholData.Magnesium);
 
       return {
         Alcohol: alcoholData.Alcohol,
