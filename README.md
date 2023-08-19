@@ -2,7 +2,7 @@
 
 Visualizing mean, median and mode for flavanoids and gamma of various alcohol classes
 
-![Screenshot of tables](https://i.ibb.co/SB90qkT/Screenshot-2023-08-18-at-11-39-27-PM.png)
+![Screenshot of tables](https://i.ibb.co/2hDc2Xx/Screenshot-2023-08-19-at-11-01-06-AM.png)
 
 ## Instructions
 
